@@ -1,0 +1,40 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+bool solution(vector<int>v, int n,int totalSum){
+    int prefix = 0;
+    int suffix =0;
+
+    for(int i =0; i<n; i++){
+        prefix += v[i];
+        suffix = totalSum - prefix;
+        if(prefix == suffix){
+            return true;
+        }
+    }
+    return false;
+}
+
+int main()
+{
+    int totalSum =0;
+    vector<int>v(5);
+    for(int i =0; i< 5; i++)
+    {
+        cin>>v[i];
+    }
+    cout<<"Elements of vector: "<<endl;
+    for(int i =0; i< 5; i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    for(int i =0; i<v.size(); i++)
+    {
+        totalSum += v[i];
+    }
+    int a = solution(v,v.size(),totalSum);
+    
+    cout<<endl<<a;
+    return 0;
+}
